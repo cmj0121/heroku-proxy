@@ -10,7 +10,6 @@ import (
 	"context"
 
 	"github.com/cmj0121/logger"
-	"github.com/cmj0121/structopt"
 )
 
 const (
@@ -19,8 +18,6 @@ const (
 )
 
 type Server struct {
-	structopt.Help
-
 	Port int `help:"The bind port"`
 
 	*logger.Log `-` // nolint
@@ -97,9 +94,9 @@ func main() {
 	}
 
 	// start parse from command-line
-	parser := structopt.MustNew(serv)
-	parser.Run()
-	serv.Log.Level = logger.LogLevel(serv.LogLevel)
+	// parser := structopt.MustNew(serv)
+	// parser.Run()
+	serv.Log.Level = logger.INFO
 	// run the HTTP server
 	serv.Run()
 }
